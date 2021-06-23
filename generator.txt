@@ -1,0 +1,8 @@
+   change directory:
+     $ cd alexandria-authentication
+
+   install dependencies:
+     $ npm install
+
+   run the app:
+     $ DEBUG=alexandria-authentication:* npm start
