@@ -78,7 +78,7 @@ router.post('/login', cors.corsWithOptions, (req, res, next) => {
       // If the user does not exist or the password didn't match we must inform the frontend
       res.statusCode = 401;
       res.setHeader('Content-Type', 'application/json');
-      res.json({success: false, status: 'Login Unsuccessful!', err: info});
+      res.json({success: false, status: 'Login Unsuccessful!', err: info, token: ''});
       return;
     }
     // The User can be loggedin, let's ask Passport to log the user (this triggers store management if any)
@@ -86,7 +86,7 @@ router.post('/login', cors.corsWithOptions, (req, res, next) => {
       if (err) {
         res.statusCode = 401;
         res.setHeader('Content-Type', 'application/json');
-        res.json({success: false, status: 'Login Unsuccessful!', err: 'Could not log in user!'}); 
+        res.json({success: false, status: 'Login Unsuccessful!', err: 'Could not log in user!', token: ''}); 
         return;
       }
       // The user has successfully login and we can generate the token!
@@ -102,7 +102,7 @@ router.post('/login', cors.corsWithOptions, (req, res, next) => {
       let token = authenticate.getToken({_id: req.user._id});
       // Again, the user will extract the success field and check if it is true to confirm registration
       // The user will also fetch and keep a token object.
-      res.json({success: true, token: token, status: 'You are successfully logged in!'});
+      res.json({success: true, status: 'You are successfully logged in!', err: '', token: token});
     }); 
   }) (req, res, next);
 });

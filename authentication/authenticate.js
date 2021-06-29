@@ -31,7 +31,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 
 var opts = {};
 // JwtStrategy Configuration: extract the token from header Bearer.
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
 // JwtStrategy Configuration: use the provided key for signing.
 opts.secretOrKey = config.tokenSecretKey;
 
