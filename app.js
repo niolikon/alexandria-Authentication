@@ -12,7 +12,7 @@ var usersRouter = require('./authentication/routes/users');
 
 // Mongoose engine setup
 const mongoose = require('mongoose');
-const connect = mongoose.connect(config.mongoUrl);
+const connect = mongoose.connect(config.mongoUrl, {useNewUrlParser: true});
 connect.then((db) => {
   console.log("Connected correctly to MongoDB");
 }, (err) => { console.log(err); });
