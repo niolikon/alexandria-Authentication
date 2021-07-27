@@ -3,7 +3,9 @@ const cors = require('cors');
 const app = express();
 
 // This enlists all the origins that this server is willing to accept
-var whitelist = ['http://localhost:3000', 'https://localhost:3443', 'http://localhost:4200'];
+var whitelist = ['http://localhost:3000', 'http://localhost:3001', 
+                 'http://localhost:8280', 'http://localhost:8380',
+                 'http://localhost:3100', 'http://localhost:3200'];
 
 // Here we will configure the corsOptions
 const corsOptionsDelegate = (req, callback) => {
